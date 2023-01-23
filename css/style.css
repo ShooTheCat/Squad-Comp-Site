@@ -6,9 +6,23 @@ body {
     min-height: 100vh;
 }
 
+.content,
+.builds,
+.boon-condi-container,
+.builds-box,
+.build,
+.inner {
+    display: flex;
+}
+
 p {
     text-align: center;
     margin: 0;
+}
+
+.icon {
+    width: 28px;
+    height: 28px;
 }
 
 .title {
@@ -19,11 +33,11 @@ p {
 
 .content,
 .boon-condi-container {
-    display: flex;
     justify-content: space-evenly;
 }
 
-.boon-condi-container {
+.boon-condi-container,
+.builds-box {
     flex-direction: column;
 }
 
@@ -31,9 +45,10 @@ p {
 .squad-container,
 .boons-container,
 .condi-container,
-.supports,
+.support,
 .damage,
-.others,
+.celestial,
+.other,
 .build,
 .party-box {
     border: 3px solid #000000;
@@ -42,14 +57,28 @@ p {
     align-self: center;
 }
 
+.builds-container {
+    width: 25%;
+}
+
 .builds {
-    display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 5px;
 }
 
+.builds-box,
 .build {
     padding: 5px;
+}
+
+.builds-box {
+    width: 95%;
+}
+
+.inner {
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .player-box {
