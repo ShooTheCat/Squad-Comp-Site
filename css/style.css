@@ -82,12 +82,16 @@ p {
 }
 
 .player-box {
+    display: flex;
     background-color: #ffffff;
     border: 1px dashed #000000;
     width: 50px;
     height: 50px;
     padding: 0;
     margin: 0;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
 }
 
 .squad-container {

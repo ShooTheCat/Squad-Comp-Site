@@ -8,7 +8,14 @@
     <title>WvW Squad Comp Site</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/gw2icon.min.css">
-    <script src="./scripts/script.js" defer></script>
+    <script src="./scripts/script.js" type="module" defer></script>
+    <script src="./scripts/boons.js" type="module" defer></script>
+    <script src="./scripts/builds.js" type="module" defer></script>
+    <script>
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+    </script>
 </head>
 
 <body>
@@ -20,32 +27,19 @@
                 <div class="builds-box support">
                     <p>Support</p>
                     <div class="inner">
-                        <div id="frb1" class="build"><img
-                                src="https://wiki.guildwars2.com/images/f/ff/Firebrand_tango_icon_48px.png"
-                                class="icon">
-                        </div>
-                        <div id="spl1" class="build"><img
-                                src="https://wiki.guildwars2.com/images/4/42/Spellbreaker_tango_icon_48px.png"
-                                class="icon">
-                        </div>
-                        <div id="tmp1" class="build"><img
-                                src="https://wiki.guildwars2.com/images/d/dd/Vindicator_tango_icon_48px.png"
-                                class="icon">
-                        </div>
-                        <div id="scr1" class="build"><img
-                                src="https://wiki.guildwars2.com/images/4/4a/Scrapper_tango_icon_48px.png" class="icon">
-                        </div>
-                        <div id="drd1" class="build"><img
-                                src="https://wiki.guildwars2.com/images/9/91/Druid_tango_icon_48px.png" class="icon">
-                        </div>
-                        <div id="vnd1" class="build"><img
-                            src="https://wiki.guildwars2.com/images/4/40/Tempest_tango_icon_48px.png"
-                            class="icon">
-                    </div>
-                        <div id="chr1" class="build"><img
-                                src="https://wiki.guildwars2.com/images/f/f2/Chronomancer_tango_icon_48px.png"
-                                class="icon">
-                        </div>
+                        <img src="https://wiki.guildwars2.com/images/f/ff/Firebrand_tango_icon_48px.png"
+                            class="icon build" id="frb1" draggable="true" ondragstart="drag(event)">
+                        <img src="https://wiki.guildwars2.com/images/4/42/Spellbreaker_tango_icon_48px.png"
+                            class="icon build" id=spl1" draggable="true" ondragstart="drag(event)">
+                        <img src="https://wiki.guildwars2.com/images/d/dd/Vindicator_tango_icon_48px.png"
+                            class="icon build">
+                        <img src="https://wiki.guildwars2.com/images/4/4a/Scrapper_tango_icon_48px.png"
+                            class="icon build">
+                        <img src="https://wiki.guildwars2.com/images/9/91/Druid_tango_icon_48px.png" class="icon build">
+                        <img src="https://wiki.guildwars2.com/images/4/40/Tempest_tango_icon_48px.png"
+                            class="icon build">
+                        <img src="https://wiki.guildwars2.com/images/f/f2/Chronomancer_tango_icon_48px.png"
+                            class="icon build">
                     </div>
                 </div>
                 <div class="builds-box damage">
