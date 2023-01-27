@@ -37,26 +37,6 @@ function noAllowDrop(event) {
   event.stopPropagation();
 };
 
-
-
-// function drop(event) {
-//   event.preventDefault();
-//   const draggedId = event.dataTransfer.getData('text');
-//   const draggedEle = document.getElementById(draggedId);
-//   const targetEle = event.target;
-
-//   const innerDiv = document.createElement('div');
-//   targetEle.appendChild(innerDiv);
-
-//   const nameEle = document.createElement('p');
-//   nameEle.textContent = 'Name';
-
-//   if (draggedEle.classList.contains('build')) {
-
-//   }
-
-// };
-
 function drop(event) {
   event.preventDefault();
 
@@ -91,27 +71,7 @@ function drop(event) {
 
       targetSquare.replaceChild(playerDiv, targetPlayer);
       draggedEle.appendChild(targetPlayer)
-    }
-
-    //   if (event.target.classList.contains('player')) {
-    //     const targetPlayer = event.target.parentNode.firstChild;
-    //     const oldSquare = build.parentNode;
-
-    //     const oldIdSplit = build.id.split('-');
-    //     const oldParty = oldIdSplit[2];
-    //     const oldSpot = oldIdSplit[3];
-
-    //     const targetIdSplit = event.target.id.split('-');
-    //     const targetParty = targetIdSplit[2];
-    //     const targetSpot = targetIdSplit[3];
-
-    //     targetPlayer.id = `${targetIdSplit[0]}-${targetIdSplit[1]}-${oldParty}-${oldSpot}`;
-    //     build.id = `${oldIdSplit[0]}-${oldIdSplit[1]}-${targetParty}-${targetSpot}`;
-
-
-    //     event.target.parentNode.replaceChild(build, targetPlayer);
-
-    //     oldSquare.appendChild(targetPlayer);
+    };
   };
 };
 
