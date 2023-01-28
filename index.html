@@ -25,7 +25,7 @@
         <p>Drag a build from the builds list or click on an empty spot to add a build.</p>
         <p>Dragging a new build to an already occupied spot will replace the build.</p>
         <p>You can drag the players in the squad to different spots and swap their positions.</p>
-        <p><s>Clicking on a player will allow you to change the name and profession.</s></p>
+        <p>Clicking on a player will allow you to change <s>the name</s> and profession.</p>
     </div>
 
     <div class="content">
@@ -192,12 +192,117 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="modal">
-
-        <!-- Modal content -->
+    <div id="playerModal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <p>Some text in the Modal..</p>
+            <div class="modal-body">
+                <div class="builds-container">
+                    <div class="builds">
+                        <div class="builds-box modal-support">
+                            <p>Support</p>
+                            <div id="modal-support-inner" class="inner"></div>
+                        </div>
+                        <div class="builds-box modal-damage">
+                            <p>Damage</p>
+                            <div id="modal-damage-inner" class="inner">
+                                <!-- <div id="drg2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/f/fe/Dragonhunter_tango_icon_48px.png"
+                                        class="icon"></div>
+                                <div id="grd2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/5/53/Guardian_tango_icon_48px.png" class="icon">
+                                </div>
+                                <div id="wlb2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/d/dd/Willbender_tango_icon_48px.png"
+                                        class="icon"></div>
+                                <div id="brs2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/7/70/Berserker_tango_icon_48px.png"
+                                        class="icon"></div>
+                                <div id="spl2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/4/42/Spellbreaker_tango_icon_48px.png"
+                                        class="icon"></div>
+                                <div id="hrl2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/8/8f/Herald_tango_icon_48px.png"
+                                        class="icon"></i></div>
+                                <div id="vnd2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/d/dd/Vindicator_tango_icon_48px.png"
+                                        class="icon"></i></div>
+                                <div id="scr2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/4/4a/Scrapper_tango_icon_48px.png" class="icon">
+                                </div>
+                                <div id="hls2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/4/4f/Holosmith_tango_icon_48px.png"
+                                        class="icon"></div>
+                                <div id="slb2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/4/4f/Soulbeast_tango_icon_48px.png"
+                                        class="icon"></div>
+                                <div id="drv2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/6/61/Daredevil_tango_icon_48px.png"
+                                        class="icon"></div>
+                                <div id="scg2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/4/49/Scourge_tango_icon_48px.png" class="icon">
+                                </div>
+                                <div id="rpr2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/3/39/Reaper_tango_icon_48px.png" class="icon">
+                                </div>
+                                <div id="wvr2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/2/2f/Weaver_tango_icon_48px.png" class="icon">
+                                </div>
+                                <div id="ctl2" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/0/08/Catalyst_tango_icon_48px.png" class="icon">
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="builds-box modal-celestial">
+                            <p>Cele</p>
+                            <div id="modal-celestial-inner" class="inner">
+                                <!-- <div id="frb1" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/f/ff/Firebrand_tango_icon_48px.png"
+                                        class="icon">
+                                </div>
+                                <div id="spl3" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/4/42/Spellbreaker_tango_icon_48px.png"
+                                        class="icon">
+                                </div>
+                                <div id="rng3" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/4/4c/Renegade_tango_icon_48px.png" class="icon">
+                                </div>
+                                <div id="tmp3" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/4/40/Tempest_tango_icon_48px.png"
+                                        class="icon">
+                                </div>
+                                <div id="chr3" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/f/f2/Chronomancer_tango_icon_48px.png"
+                                        class="icon">
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="builds-box modal-other">
+                            <p>Other</p>
+                            <div id="modal-other-inner" class="inner">
+                                <!-- <div id="frb1" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/f/ff/Firebrand_tango_icon_48px.png"
+                                        class="icon">
+                                </div>
+                                <div id="spl3" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/4/42/Spellbreaker_tango_icon_48px.png"
+                                        class="icon">
+                                </div>
+                                <div id="rng3" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/4/4c/Renegade_tango_icon_48px.png" class="icon">
+                                </div>
+                                <div id="tmp3" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/4/40/Tempest_tango_icon_48px.png"
+                                        class="icon">
+                                </div>
+                                <div id="chr3" class="build"><img
+                                        src="https://wiki.guildwars2.com/images/f/f2/Chronomancer_tango_icon_48px.png"
+                                        class="icon">
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

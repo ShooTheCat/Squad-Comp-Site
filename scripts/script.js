@@ -3,13 +3,12 @@ import { builds } from './builds.js';
 
 const SQUADSIZE = 50;
 const squadContainer = document.querySelector('.squad-container');
-const modal = document.getElementById("myModal");
+const modal = document.getElementById("playerModal");
 const modalCloseX = document.querySelector(".close-modal");
 
-AddBuild('support');
-AddBuild('damage');
-AddBuild('celestial');
-AddBuild('other');
+for (const buildType in builds) {
+  AddBuild(buildType);
+}
 
 makeGridBox();
 
@@ -63,7 +62,7 @@ function drop(event) {
       targetSquare.replaceChild(newDiv, playerDiv);
     } else {
       targetSquare.draggable = true;
-      
+
       targetSquare.appendChild(newDiv);
     };
   } else {
@@ -72,7 +71,7 @@ function drop(event) {
       targetSquare.classList.remove('empty');
 
       targetSquare.draggable = true;
-      
+
       targetSquare.appendChild(playerDiv);
 
       draggedEle.classList.add('empty');
@@ -87,7 +86,7 @@ function drop(event) {
 };
 
 
-function MakePlayerContainer(draggedEle, targetSquare, draggedId) {
+function MakePlayerContainer(sourceEle, targetSquare, sourceId) {
   const newDiv = document.createElement('div');
   const playerProf = document.createElement('img');
   const playerName = document.createElement('p');
@@ -96,17 +95,16 @@ function MakePlayerContainer(draggedEle, targetSquare, draggedId) {
 
   playerName.textContent = 'Name';
 
-  playerProf.src = draggedEle.src;
+  playerProf.src = sourceEle.src;
 
-  newDiv.classList.add('player', `${draggedId.split('-')[0]}-player`);
-  newDiv.id = `${draggedId}`;
+  newDiv.classList.add('player', `${sourceId.split('-')[0]}-player`);
+  newDiv.id = `${sourceId}`;
 
   newDiv.appendChild(playerProf);
   newDiv.appendChild(playerName);
 
   return newDiv;
 };
-
 
 function AddBuild(buildType) {
   const boxInner = document.getElementById(`${buildType}-inner`);
@@ -125,19 +123,119 @@ function AddBuild(buildType) {
   };
 };
 
+function AddModalBuild(buildType) {
+  const boxInner = document.getElementById(`modal-${buildType}-inner`);
+  for (const build of builds[buildType]) {
+    const buildBox = document.createElement('img');
 
-function OpenModal() {
-  modal.style.display = "block"
+    buildBox.src = build.icon;
+
+    buildBox.classList.add('icon', 'build');
+    buildBox.id = `modal-${buildType}-${build.id}${build.value}`
+    buildBox.onclick = ModalChoice;
+
+    boxInner.appendChild(buildBox);
+  };
+};
+
+function RemoveModalBuilds() {
+  for (const buildType in builds) {
+    const boxInner = document.getElementById(`modal-${buildType}-inner`);
+
+    while (boxInner.firstChild) {
+      boxInner.removeChild(boxInner.lastChild);
+    };
+
+    const classList = modal.classList;
+
+    while (classList.length > 0) {
+      classList.remove(classList.item(0));
+    };
+
+    classList.add('modal')
+  };
+};
+
+function OpenModal(event) {
+  const chosenSpot = event.target
+  modal.classList.add(chosenSpot.id)
+  for (const buildType in builds) {
+    AddModalBuild(buildType);
+  }
+  //If target square has player in it highlight their class in the selection
+  if (chosenSpot.firstChild) {
+    const chosenPlayer = chosenSpot.firstChild;
+    const modalChosenBuild = document.getElementById(`modal-${chosenPlayer.id}`);
+    modalChosenBuild.classList.add('modal-chosen');
+  };
+  modal.style.display = "block";
 };
 
 // When the user clicks on <span> (x), close the modal
-modalCloseX.onclick = function() {
+modalCloseX.onclick = function () {
   modal.style.display = "none";
+  RemoveModalBuilds();
 };
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    RemoveModalBuilds();
   };
+};
+
+function ModalChoice(event) {
+  const chosenBuild = event.target;
+  const chosenSpot = document.getElementById(modal.classList.item(1));
+
+  if (chosenBuild.classList.contains('modal-chosen')) {
+    return
+  } else {
+    
+    if (chosenSpot.firstChild) {
+      const prevChosenBuild = document.querySelector('.modal-chosen');
+      prevChosenBuild.classList.remove('modal-chosen');
+      
+      chosenBuild.classList.add('modal-chosen');
+
+      const playerBuild = chosenSpot.firstChild;
+
+      playerBuild.id = chosenBuild.id.replace('modal-','');
+      playerBuild.firstChild.src = chosenBuild.src
+
+      playerBuild.classList.remove(playerBuild.classList.item(1));
+      playerBuild.classList.add(`${chosenBuild.id.split('-')[1]}-player`);
+
+    } else {
+      chosenBuild.classList.add('modal-chosen');
+
+      const newDiv = MakePlayerContainerModal(chosenBuild, chosenSpot);
+      chosenSpot.draggable = true;
+
+      chosenSpot.appendChild(newDiv);
+
+    }
+
+  }
+}
+
+function MakePlayerContainerModal(sourceEle, targetSquare) {
+  const newDiv = document.createElement('div');
+  const playerProf = document.createElement('img');
+  const playerName = document.createElement('p');
+
+  targetSquare.classList.remove('empty');
+
+  playerName.textContent = 'Name';
+
+  playerProf.src = sourceEle.src;
+
+  newDiv.classList.add('player', `${sourceEle.id.split('-')[1]}-player`);
+  newDiv.id = sourceEle.id.replace('modal-','');
+
+  newDiv.appendChild(playerProf);
+  newDiv.appendChild(playerName);
+
+  return newDiv;
 };
