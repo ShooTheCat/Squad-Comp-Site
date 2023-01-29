@@ -15,13 +15,15 @@ body {
 .inner,
 .player-box,
 .player,
-.modal-body {
+.modal-body,
+#modal-name-form {
     display: flex;
 }
 
 p {
     text-align: center;
     margin: 0;
+    font-size: small;
 }
 
 .icon {
@@ -42,7 +44,8 @@ p {
 
 .boon-condi-container,
 .builds-box,
-.player {
+.player,
+#modal-name-form {
     flex-direction: column;
 }
 
@@ -122,8 +125,8 @@ p {
     flex-direction: column;
     background: rgba(0, 0, 0, 0);
     border: none;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     padding: 0;
     margin: 0;
     position: relative;
@@ -141,18 +144,24 @@ p {
 .player {
     border: 2px solid #000000;
     border-radius: 5px;
-    width: 59px;
-    height: 59px;
+    width: 68px;
+    height: 68px;
     align-items: center;
     justify-content: center;
     z-index: -1;
 }
 
+.player-name {
+    max-width: 68px;
+    max-height: 68px;
+    word-wrap: break-word;
+}
+
 .squad-container {
     border: 2px solid #000000;
     display: grid;
-    grid-template-columns: repeat(5, 67px);
-    grid-template-rows: repeat(10, 67px);
+    grid-template-columns: repeat(5, 77px);
+    grid-template-rows: repeat(10, 77px);
     padding-top: 5px;
     padding-left: 5px;
     justify-content: center;
@@ -212,4 +221,33 @@ p {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+#modal-name-form,
+label {
+    margin: 10px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 5px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+input[type=submit] {
+    width: 100%;
+    background-color: #56148d;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #7a46ce;
 }

@@ -2,50 +2,50 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WvW Squad Comp Site</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/gw2icon.min.css">
-    <script src="./scripts/script.js" type="module" defer></script>
-    <script src="./scripts/boons.js" type="module" defer></script>
-    <script src="./scripts/builds.js" type="module" defer></script>
-    <script src="./scripts/sha256.min.js" type="module" defer></script>
-    <script>
-        function drag(event) {
-            event.dataTransfer.setData("text", event.target.id);
-        }
-    </script>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WvW Squad Comp Site</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/gw2icon.min.css">
+        <script src="./scripts/script.js" type="module" defer></script>
+        <script src="./scripts/boons.js" type="module" defer></script>
+        <script src="./scripts/builds.js" type="module" defer></script>
+        <script src="./scripts/sha256.min.js" type="module" defer></script>
+        <script>
+                function drag(event) {
+                        event.dataTransfer.setData("text", event.target.id);
+                }
+        </script>
 </head>
 
 <body>
-    <div class="title">WvW Squad Comp Site</div>
-    <div class="description">
-        <p>Drag a build from the builds list or click on an empty spot to add a build.</p>
-        <p>Dragging a new build to an already occupied spot will replace the build.</p>
-        <p>You can drag the players in the squad to different spots and swap their positions.</p>
-        <p>Clicking on a player will allow you to change <s>the name</s> and profession.</p>
-    </div>
-
-    <div class="content">
-        <div class="builds-container">
-            <h3>Builds</h3>
-            <div class="builds-description">
-                <p>Drag a build to an empty spot in the squad to add a build.</p>
+        <div class="title">WvW Squad Comp Site</div>
+        <div class="description">
+                <p>Drag a build from the builds list or click on an empty spot to add a build.</p>
                 <p>Dragging a new build to an already occupied spot will replace the build.</p>
-                <p><s>Clicking on a build will allow you to see the gw2skills of the build</s></p>
-                <p><s>Clicking on a build will allow you to add it to the squad</s></p>
-            </div>
-            <div class="builds">
-                <div class="builds-box support">
-                    <p>Support</p>
-                    <div id="support-inner" class="inner"></div>
-                </div>
-                <div class="builds-box damage">
-                    <p>Damage</p>
-                    <div id="damage-inner" class="inner">
-                        <!-- <div id="drg2" class="build"><img
+                <p>You can drag the players in the squad to different spots and swap their positions.</p>
+                <p>Clicking on a player will allow you to change the name and profession.</p>
+        </div>
+
+        <div class="content">
+                <div class="builds-container">
+                        <h3>Builds</h3>
+                        <div class="builds-description">
+                                <p>Drag a build to an empty spot in the squad to add a build.</p>
+                                <p>Dragging a new build to an already occupied spot will replace the build.</p>
+                                <p><s>Clicking on a build will allow you to see the gw2skills of the build</s></p>
+                                <p><s>Clicking on a build will allow you to add it to the squad</s></p>
+                        </div>
+                        <div class="builds">
+                                <div class="builds-box support">
+                                        <p>Support</p>
+                                        <div id="support-inner" class="inner"></div>
+                                </div>
+                                <div class="builds-box damage">
+                                        <p>Damage</p>
+                                        <div id="damage-inner" class="inner">
+                                                <!-- <div id="drg2" class="build"><img
                                 src="https://wiki.guildwars2.com/images/f/fe/Dragonhunter_tango_icon_48px.png"
                                 class="icon"></div>
                         <div id="grd2" class="build"><img
@@ -90,12 +90,12 @@
                         <div id="ctl2" class="build"><img
                                 src="https://wiki.guildwars2.com/images/0/08/Catalyst_tango_icon_48px.png" class="icon">
                         </div> -->
-                    </div>
-                </div>
-                <div class="builds-box celestial">
-                    <p>Cele</p>
-                    <div id="celestial-inner" class="inner">
-                        <!-- <div id="frb1" class="build"><img
+                                        </div>
+                                </div>
+                                <div class="builds-box celestial">
+                                        <p>Cele</p>
+                                        <div id="celestial-inner" class="inner">
+                                                <!-- <div id="frb1" class="build"><img
                                 src="https://wiki.guildwars2.com/images/f/ff/Firebrand_tango_icon_48px.png"
                                 class="icon">
                         </div>
@@ -114,12 +114,12 @@
                                 src="https://wiki.guildwars2.com/images/f/f2/Chronomancer_tango_icon_48px.png"
                                 class="icon">
                         </div> -->
-                    </div>
-                </div>
-                <div class="builds-box other">
-                    <p>Other</p>
-                    <div id="other-inner" class="inner">
-                        <!-- <div id="frb1" class="build"><img
+                                        </div>
+                                </div>
+                                <div class="builds-box other">
+                                        <p>Other</p>
+                                        <div id="other-inner" class="inner">
+                                                <!-- <div id="frb1" class="build"><img
                                 src="https://wiki.guildwars2.com/images/f/ff/Firebrand_tango_icon_48px.png"
                                 class="icon">
                         </div>
@@ -138,174 +138,105 @@
                                 src="https://wiki.guildwars2.com/images/f/f2/Chronomancer_tango_icon_48px.png"
                                 class="icon">
                         </div> -->
-                    </div>
+                                        </div>
+                                </div>
+                        </div>
                 </div>
-            </div>
-        </div>
-        <div class="squad-container">
+                <div class="squad-container">
 
-        </div>
-        <div class="boon-condi-container">
-            <div class="boons-container">
-                <p>Boons</p>
-                <div class="parties">
-                    <div class="party-box">
-                        <p>Party 1</p>
-                        <div id="plyr1-1" class="player-boon"><i class="gw2-fireband gw2-2x"></i>Aegis, Alac, Fury,
-                            Might,
-                            Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
-                        <div id="plyr1-2" class="player-boon"><i class="gw2-fireband gw2-2x"></i>Aegis, Alac, Fury,
-                            Might,
-                            Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
-                        <div id="plyr1-3" class="player-boon"><i class="gw2-scourge gw2-2x"></i>Aegis, Alac, Fury,
-                            Might,
-                            Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
-                        <div id="plyr1-4" class="player-boon"><i class="gw2-scourge gw2-2x"></i>Aegis, Alac, Fury,
-                            Might,
-                            Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
-                        <div id="plyr1-5" class="player-boon"><i class="gw2-dragonhunter gw2-2x"></i>Aegis, Alac, Fury,
-                            Might, Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
-                    </div>
                 </div>
-            </div>
-            <div class="condi-container">
-                <p>Condies</p>
-                <div class="parties">
-                    <div class="party-box">
-                        <p>Party 1</p>
-                        <div id="plyr1-1" class="player-condi"><i class="gw2-fireband gw2-2x"></i>Aegis, Alac, Fury,
-                            Might,
-                            Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
-                        <div id="plyr1-2" class="player-condi"><i class="gw2-fireband gw2-2x"></i>Aegis, Alac, Fury,
-                            Might,
-                            Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
-                        <div id="plyr1-3" class="player-condi"><i class="gw2-scourge gw2-2x"></i>Aegis, Alac, Fury,
-                            Might,
-                            Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
-                        <div id="plyr1-4" class="player-condi"><i class="gw2-scourge gw2-2x"></i>Aegis, Alac, Fury,
-                            Might,
-                            Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
-                        <div id="plyr1-5" class="player-condi"><i class="gw2-dragonhunter gw2-2x"></i>Aegis, Alac, Fury,
-                            Might, Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
-                    </div>
+                <div class="boon-condi-container">
+                        <div class="boons-container">
+                                <p>Boons</p>
+                                <div class="parties">
+                                        <div class="party-box">
+                                                <p>Party 1</p>
+                                                <div id="plyr1-1" class="player-boon"><i
+                                                                class="gw2-fireband gw2-2x"></i>Aegis, Alac, Fury,
+                                                        Might,
+                                                        Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
+                                                <div id="plyr1-2" class="player-boon"><i
+                                                                class="gw2-fireband gw2-2x"></i>Aegis, Alac, Fury,
+                                                        Might,
+                                                        Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
+                                                <div id="plyr1-3" class="player-boon"><i
+                                                                class="gw2-scourge gw2-2x"></i>Aegis, Alac, Fury,
+                                                        Might,
+                                                        Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
+                                                <div id="plyr1-4" class="player-boon"><i
+                                                                class="gw2-scourge gw2-2x"></i>Aegis, Alac, Fury,
+                                                        Might,
+                                                        Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
+                                                <div id="plyr1-5" class="player-boon"><i
+                                                                class="gw2-dragonhunter gw2-2x"></i>Aegis, Alac, Fury,
+                                                        Might, Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="condi-container">
+                                <p>Condies</p>
+                                <div class="parties">
+                                        <div class="party-box">
+                                                <p>Party 1</p>
+                                                <div id="plyr1-1" class="player-condi"><i
+                                                                class="gw2-fireband gw2-2x"></i>Aegis, Alac, Fury,
+                                                        Might,
+                                                        Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
+                                                <div id="plyr1-2" class="player-condi"><i
+                                                                class="gw2-fireband gw2-2x"></i>Aegis, Alac, Fury,
+                                                        Might,
+                                                        Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
+                                                <div id="plyr1-3" class="player-condi"><i
+                                                                class="gw2-scourge gw2-2x"></i>Aegis, Alac, Fury,
+                                                        Might,
+                                                        Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
+                                                <div id="plyr1-4" class="player-condi"><i
+                                                                class="gw2-scourge gw2-2x"></i>Aegis, Alac, Fury,
+                                                        Might,
+                                                        Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
+                                                <div id="plyr1-5" class="player-condi"><i
+                                                                class="gw2-dragonhunter gw2-2x"></i>Aegis, Alac, Fury,
+                                                        Might, Prot, Quick, Regen, Res, Reso, Stab, Swift, Vigor</div>
+                                        </div>
+                                </div>
+                        </div>
                 </div>
-            </div>
         </div>
-    </div>
-    <div id="playerModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-body">
-                <div class="builds-container">
-                    <div class="builds">
-                        <div class="builds-box modal-support">
-                            <p>Support</p>
-                            <div id="modal-support-inner" class="inner"></div>
+        <div id="playerModal" class="modal">
+                <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <div class="modal-body">
+                                <form id="modal-name-form">
+                                        <label for="pname">Player Name</label>
+                                        <input type="text" id="pname" name="playername" placeholder="Name" maxlength="10" size="10">
+                                        <input type="submit" value="Update Name">
+                                </form>
+                                <div class="builds-container">
+                                        <div class="builds">
+                                                <div class="builds-box modal-support">
+                                                        <p>Support</p>
+                                                        <div id="modal-support-inner" class="inner"></div>
+                                                </div>
+                                                <div class="builds-box modal-damage">
+                                                        <p>Damage</p>
+                                                        <div id="modal-damage-inner" class="inner">
+                                                        </div>
+                                                </div>
+                                                <div class="builds-box modal-celestial">
+                                                        <p>Cele</p>
+                                                        <div id="modal-celestial-inner" class="inner">
+                                                        </div>
+                                                </div>
+                                                <div class="builds-box modal-other">
+                                                        <p>Other</p>
+                                                        <div id="modal-other-inner" class="inner">
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
                         </div>
-                        <div class="builds-box modal-damage">
-                            <p>Damage</p>
-                            <div id="modal-damage-inner" class="inner">
-                                <!-- <div id="drg2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/f/fe/Dragonhunter_tango_icon_48px.png"
-                                        class="icon"></div>
-                                <div id="grd2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/5/53/Guardian_tango_icon_48px.png" class="icon">
-                                </div>
-                                <div id="wlb2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/d/dd/Willbender_tango_icon_48px.png"
-                                        class="icon"></div>
-                                <div id="brs2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/7/70/Berserker_tango_icon_48px.png"
-                                        class="icon"></div>
-                                <div id="spl2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/4/42/Spellbreaker_tango_icon_48px.png"
-                                        class="icon"></div>
-                                <div id="hrl2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/8/8f/Herald_tango_icon_48px.png"
-                                        class="icon"></i></div>
-                                <div id="vnd2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/d/dd/Vindicator_tango_icon_48px.png"
-                                        class="icon"></i></div>
-                                <div id="scr2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/4/4a/Scrapper_tango_icon_48px.png" class="icon">
-                                </div>
-                                <div id="hls2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/4/4f/Holosmith_tango_icon_48px.png"
-                                        class="icon"></div>
-                                <div id="slb2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/4/4f/Soulbeast_tango_icon_48px.png"
-                                        class="icon"></div>
-                                <div id="drv2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/6/61/Daredevil_tango_icon_48px.png"
-                                        class="icon"></div>
-                                <div id="scg2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/4/49/Scourge_tango_icon_48px.png" class="icon">
-                                </div>
-                                <div id="rpr2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/3/39/Reaper_tango_icon_48px.png" class="icon">
-                                </div>
-                                <div id="wvr2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/2/2f/Weaver_tango_icon_48px.png" class="icon">
-                                </div>
-                                <div id="ctl2" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/0/08/Catalyst_tango_icon_48px.png" class="icon">
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="builds-box modal-celestial">
-                            <p>Cele</p>
-                            <div id="modal-celestial-inner" class="inner">
-                                <!-- <div id="frb1" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/f/ff/Firebrand_tango_icon_48px.png"
-                                        class="icon">
-                                </div>
-                                <div id="spl3" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/4/42/Spellbreaker_tango_icon_48px.png"
-                                        class="icon">
-                                </div>
-                                <div id="rng3" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/4/4c/Renegade_tango_icon_48px.png" class="icon">
-                                </div>
-                                <div id="tmp3" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/4/40/Tempest_tango_icon_48px.png"
-                                        class="icon">
-                                </div>
-                                <div id="chr3" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/f/f2/Chronomancer_tango_icon_48px.png"
-                                        class="icon">
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="builds-box modal-other">
-                            <p>Other</p>
-                            <div id="modal-other-inner" class="inner">
-                                <!-- <div id="frb1" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/f/ff/Firebrand_tango_icon_48px.png"
-                                        class="icon">
-                                </div>
-                                <div id="spl3" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/4/42/Spellbreaker_tango_icon_48px.png"
-                                        class="icon">
-                                </div>
-                                <div id="rng3" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/4/4c/Renegade_tango_icon_48px.png" class="icon">
-                                </div>
-                                <div id="tmp3" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/4/40/Tempest_tango_icon_48px.png"
-                                        class="icon">
-                                </div>
-                                <div id="chr3" class="build"><img
-                                        src="https://wiki.guildwars2.com/images/f/f2/Chronomancer_tango_icon_48px.png"
-                                        class="icon">
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
         </div>
-
-    </div>
 </body>
 
 </html>

@@ -5,6 +5,10 @@ const SQUADSIZE = 50;
 const squadContainer = document.querySelector('.squad-container');
 const modal = document.getElementById("playerModal");
 const modalCloseX = document.querySelector(".close-modal");
+const modalNameForm = document.getElementById('modal-name-form')
+
+modalNameForm.addEventListener('submit', UpdatePlayerName)
+
 
 for (const buildType in builds) {
   AddBuild(buildType);
@@ -94,6 +98,7 @@ function MakePlayerContainer(sourceEle, targetSquare, sourceId) {
   targetSquare.classList.remove('empty');
 
   playerName.textContent = 'Name';
+  playerName.classList.add('player-name');
 
   playerProf.src = sourceEle.src;
 
@@ -162,6 +167,9 @@ function OpenModal(event) {
   for (const buildType in builds) {
     AddModalBuild(buildType);
   }
+
+  const newPlayerName = document.getElementById('pname');
+  newPlayerName.value = '';
   //If target square has player in it highlight their class in the selection
   if (chosenSpot.firstChild) {
     const chosenPlayer = chosenSpot.firstChild;
@@ -228,6 +236,7 @@ function MakePlayerContainerModal(sourceEle, targetSquare) {
   targetSquare.classList.remove('empty');
 
   playerName.textContent = 'Name';
+  playerName.classList.add('player-name');
 
   playerProf.src = sourceEle.src;
 
@@ -239,3 +248,16 @@ function MakePlayerContainerModal(sourceEle, targetSquare) {
 
   return newDiv;
 };
+
+function UpdatePlayerName(event) {
+  event.preventDefault();
+  const chosenSpot = document.getElementById(modal.classList.item(1));
+  const newPlayerName = document.getElementById('pname');
+  
+  if (chosenSpot.firstChild) {
+    const playerName = chosenSpot.firstChild.lastChild;
+    playerName.textContent = newPlayerName.value
+  } else {
+    return
+  }
+}
