@@ -16,6 +16,7 @@ body {
 .player-box,
 .player,
 .modal-body,
+.party-row,
 #modal-name-form {
     display: flex;
 }
@@ -160,13 +161,22 @@ p {
 .squad-container {
     border: 2px solid #000000;
     display: grid;
-    grid-template-columns: repeat(5, 77px);
-    grid-template-rows: repeat(10, 77px);
-    padding-top: 5px;
-    padding-left: 5px;
+    grid-template-rows: repeat(10, 80px);
+    padding: 5px;
     justify-content: center;
     align-content: center;
 }
+
+.party-row > div {
+    margin: 2px;
+}
+
+.party-row > h2 {
+    max-width: 10px;
+    padding-right: 20px;
+    padding-left: 3px;
+}
+
 
 .modal {
     display: none;

@@ -1,7 +1,6 @@
 import boons from './boons.js';
 import { builds } from './builds.js';
 
-const SQUADSIZE = 50;
 const squadContainer = document.querySelector('.squad-container');
 const modal = document.getElementById("playerModal");
 const modalCloseX = document.querySelector(".close-modal");
@@ -14,32 +13,46 @@ for (const buildType in builds) {
   AddBuild(buildType);
 }
 
-makeGridBox();
+//Base squad size is 10x 5-man parties
+MakeGridBox(10);
 
-function makeGridBox() {
-  let partySpot = 1;
-  let party = 1;
-  for (let i = 0; i < 50; i++) {
-    if ((partySpot % 6) == 0) {
-      partySpot = 1;
-      party++;
-    }
-    const playerBox = document.createElement("div");
+function MakeGridBox(rows) {
+  for (let i = 1; i <= rows; i++) {
+    DrawRow(i);
+  };
 
-    playerBox.classList.add("player-box", "empty");
-    playerBox.id = `player-box-${party}-${partySpot}`;
+  function DrawRow(rowNumb) {
+    const partyRow = document.createElement("div");
 
-    playerBox.ondragover = allowDrop;
-    playerBox.ondrop = drop;
-    playerBox.setAttribute('ondragstart', 'drag(event)')
+    partyRow.classList.add('party-row', `party-${rowNumb}`)
 
-    playerBox.onclick = OpenModal;
+    const partyNumbBox = document.createElement("h2");
+    partyNumbBox.textContent = rowNumb
 
-    squadContainer.appendChild(playerBox);
+    partyRow.appendChild(partyNumbBox);
 
-    partySpot++;
+    for (let j = 1; j <= 5; j++) {
+      let partySpot = j;
+      let party = rowNumb;
+
+      const playerBox = document.createElement("div");
+
+      playerBox.classList.add("player-box", "empty");
+      playerBox.id = `player-box-${party}-${partySpot}`;
+
+      playerBox.ondragover = allowDrop;
+      playerBox.ondrop = drop;
+      playerBox.setAttribute('ondragstart', 'drag(event)')
+
+      playerBox.onclick = OpenModal;
+
+      partyRow.appendChild(playerBox);
+
+    };
+    squadContainer.appendChild(partyRow);
   };
 };
+
 
 function allowDrop(event) {
   event.preventDefault();
@@ -200,16 +213,16 @@ function ModalChoice(event) {
   if (chosenBuild.classList.contains('modal-chosen')) {
     return
   } else {
-    
+
     if (chosenSpot.firstChild) {
       const prevChosenBuild = document.querySelector('.modal-chosen');
       prevChosenBuild.classList.remove('modal-chosen');
-      
+
       chosenBuild.classList.add('modal-chosen');
 
       const playerBuild = chosenSpot.firstChild;
 
-      playerBuild.id = chosenBuild.id.replace('modal-','');
+      playerBuild.id = chosenBuild.id.replace('modal-', '');
       playerBuild.firstChild.src = chosenBuild.src
 
       playerBuild.classList.remove(playerBuild.classList.item(1));
@@ -241,7 +254,7 @@ function MakePlayerContainerModal(sourceEle, targetSquare) {
   playerProf.src = sourceEle.src;
 
   newDiv.classList.add('player', `${sourceEle.id.split('-')[1]}-player`);
-  newDiv.id = sourceEle.id.replace('modal-','');
+  newDiv.id = sourceEle.id.replace('modal-', '');
 
   newDiv.appendChild(playerProf);
   newDiv.appendChild(playerName);
@@ -253,7 +266,7 @@ function UpdatePlayerName(event) {
   event.preventDefault();
   const chosenSpot = document.getElementById(modal.classList.item(1));
   const newPlayerName = document.getElementById('pname');
-  
+
   if (chosenSpot.firstChild) {
     const playerName = chosenSpot.firstChild.lastChild;
     playerName.textContent = newPlayerName.value
