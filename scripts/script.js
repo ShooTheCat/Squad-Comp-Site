@@ -1,7 +1,12 @@
-import boons from './boons.js';
+import { boons } from './boons.js';
 import { builds } from './builds.js';
 
+//Base squad size is 10x 5-man parties
+let partyAmount = 10;
+
 const squadContainer = document.querySelector('.squad-container');
+const boonsContainer = document.querySelector('.boons-container');
+const condiesContainer = document.querySelector('.condi-container');
 const modal = document.getElementById("playerModal");
 const modalCloseX = document.querySelector(".close-modal");
 const modalNameForm = document.getElementById('modal-name-form')
@@ -11,10 +16,14 @@ modalNameForm.addEventListener('submit', UpdatePlayerName)
 
 for (const buildType in builds) {
   AddBuild(buildType);
-}
+};
 
-//Base squad size is 10x 5-man parties
-MakeGridBox(10);
+for (let i = 1; i <= partyAmount; i++) {
+  AddBoon(i);
+};
+
+
+MakeGridBox(partyAmount);
 
 function MakeGridBox(rows) {
   for (let i = 1; i <= rows; i++) {
@@ -52,7 +61,6 @@ function MakeGridBox(rows) {
     squadContainer.appendChild(partyRow);
   };
 };
-
 
 function allowDrop(event) {
   event.preventDefault();
@@ -102,7 +110,6 @@ function drop(event) {
   };
 };
 
-
 function MakePlayerContainer(sourceEle, targetSquare, sourceId) {
   const newDiv = document.createElement('div');
   const playerProf = document.createElement('img');
@@ -126,18 +133,20 @@ function MakePlayerContainer(sourceEle, targetSquare, sourceId) {
 
 function AddBuild(buildType) {
   const boxInner = document.getElementById(`${buildType}-inner`);
-  for (const build of builds[buildType]) {
-    const buildBox = document.createElement('img');
+  for (const profession in builds[buildType]) {
+    for (const build of builds[buildType][profession]) {
+      const buildBox = document.createElement('img');
 
-    buildBox.src = build.icon;
+      buildBox.src = build.icon;
 
-    buildBox.classList.add('icon', 'build');
-    buildBox.id = `${buildType}-${build.id}${build.value}`
+      buildBox.classList.add('icon', 'build');
+      buildBox.id = `${buildType}-${build.id}${build.value}`
 
-    buildBox.draggable = true;
-    buildBox.setAttribute('ondragstart', 'drag(event)')
+      buildBox.draggable = true;
+      buildBox.setAttribute('ondragstart', 'drag(event)')
 
-    boxInner.appendChild(buildBox);
+      boxInner.appendChild(buildBox);
+    };
   };
 };
 
@@ -273,4 +282,27 @@ function UpdatePlayerName(event) {
   } else {
     return
   }
-}
+};
+
+function AddBoon(party) {
+  const partyBox = document.createElement('div');
+  const partyNumb = document.createElement('p');
+
+  partyBox.classList.add('party-box');
+
+  partyNumb.textContent = `Party ${party}`;
+
+  partyBox.appendChild(partyNumb);
+
+  for (const boon in boons) {
+    const boonIcon = document.createElement('img');
+
+    boonIcon.src = boons[boon]['url'];
+    boonIcon.classList.add('icon');
+
+    partyBox.appendChild(boonIcon);
+  };
+
+  boonsContainer.appendChild(partyBox);
+
+};
