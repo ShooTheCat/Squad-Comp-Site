@@ -152,16 +152,18 @@ function AddBuild(buildType) {
 
 function AddModalBuild(buildType) {
   const boxInner = document.getElementById(`modal-${buildType}-inner`);
-  for (const build of builds[buildType]) {
-    const buildBox = document.createElement('img');
+  for (const profession in builds[buildType]) {
+    for (const build of builds[buildType][profession]) {
+      const buildBox = document.createElement('img');
 
-    buildBox.src = build.icon;
+      buildBox.src = build.icon;
 
-    buildBox.classList.add('icon', 'build');
-    buildBox.id = `modal-${buildType}-${build.id}${build.value}`
-    buildBox.onclick = ModalChoice;
+      buildBox.classList.add('icon', 'build');
+      buildBox.id = `modal-${buildType}-${build.id}${build.value}`
+      buildBox.onclick = ModalChoice;
 
-    boxInner.appendChild(buildBox);
+      boxInner.appendChild(buildBox);
+    };
   };
 };
 
