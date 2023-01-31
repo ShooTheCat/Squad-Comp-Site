@@ -1,50 +1,62 @@
 export const boons = [
     {
         name: 'Aegis',
-        url: 'https://wiki.guildwars2.com/images/6/6c/Aegis_40px.png'
+        url: '../img/Boons_and_Conditions/Aegis.png'
     },
     {
         name: 'Alacrity',
-        url: 'https://wiki.guildwars2.com/images/4/4c/Alacrity.png'
+        url: '../img/Boons_and_Conditions/Alacrity.png'
     },
     {
         name: 'Fury',
-        url: 'https://wiki.guildwars2.com/images/e/e6/Fury_40px.png'
+        url: '../img/Boons_and_Conditions/Fury.png'
     },
     {
         name: 'Might',
-        url: 'https://wiki.guildwars2.com/images/1/10/Might_40px.png'
+        url: '../img/Boons_and_Conditions/Might.png'
     },
     {
         name: 'Protection',
-        url: 'https://wiki.guildwars2.com/images/1/11/Protection_40px.png'
+        url: '../img/Boons_and_Conditions/Protection.png'
     },
     {
         name: 'Quickness',
-        url: 'https://wiki.guildwars2.com/images/c/c1/Quickness_40px.png'
+        url: '../img/Boons_and_Conditions/Quickness.png'
     },
     {
         name: 'Regeneration',
-        url: 'https://wiki.guildwars2.com/images/9/9a/Regeneration_40px.png'
+        url: '../img/Boons_and_Conditions/Regeneration.png'
     },
     {
         name: 'Resistance',
-        url: 'https://wiki.guildwars2.com/images/e/e9/Resistance_40px.png'
+        url: '../img/Boons_and_Conditions/Resistance.png'
     },
     {
         name: 'Resolution',
-        url: 'https://wiki.guildwars2.com/images/0/06/Resolution.png'
+        url: '../img/Boons_and_Conditions/Resolution.png'
     },
     {
         name: 'Stability',
-        url: 'https://wiki.guildwars2.com/images/c/c2/Stability_40px.png'
+        url: '../img/Boons_and_Conditions/Stability.png'
     },
     {
         name: 'Swiftness',
-        url: 'https://wiki.guildwars2.com/images/1/19/Swiftness_40px.png'
+        url: '../img/Boons_and_Conditions/Swiftness.png'
     },
     {
         name: 'Vigor',
-        url: 'https://wiki.guildwars2.com/images/f/fa/Vigor_40px.png'
-    } 
+        url: '../img/Boons_and_Conditions/Vigor.png'
+    },
+    {
+        name: 'Superspeed',
+        url: '../img/Boons_and_Conditions/Superspeed.png'
+    },
+    {
+        name: 'Stealth',
+        url: '../img/Boons_and_Conditions/Stealth.png'
+    },
+    {
+        name: 'Stunbreak',
+        url: '../img/Boons_and_Conditions/Breaks_stun.png'
+    }
 ];

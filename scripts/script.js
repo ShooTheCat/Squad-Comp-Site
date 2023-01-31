@@ -209,6 +209,14 @@ modalCloseX.onclick = function () {
   RemoveModalBuilds();
 };
 
+document.onkeydown = function (event) {
+  if ((event.key == 'Escape') || (event.key == 'Enter')) {
+    modal.style.display = "none";
+    UpdatePlayerName(event);
+    RemoveModalBuilds();
+  };
+};
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target == modal) {
@@ -294,7 +302,7 @@ function AddBoon(party) {
 
   partyNumb.textContent = `Party ${party}`;
 
-  partyBox.appendChild(partyNumb);
+  boonsContainer.appendChild(partyNumb);
 
   for (const boon in boons) {
     const boonIcon = document.createElement('img');
