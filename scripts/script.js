@@ -22,7 +22,6 @@ for (let i = 1; i <= partyAmount; i++) {
   AddBoon(i);
 };
 
-
 MakeGridBox(partyAmount);
 
 function MakeGridBox(rows) {
@@ -308,7 +307,7 @@ function AddBoon(party) {
     const boonIcon = document.createElement('img');
 
     boonIcon.src = boons[boon]['url'];
-    boonIcon.classList.add('icon');
+    boonIcon.classList.add('boon-icon');
 
     partyBox.appendChild(boonIcon);
   };

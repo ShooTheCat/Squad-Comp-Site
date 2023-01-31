@@ -33,6 +33,11 @@ p {
     height: 28px;
 }
 
+.boon-icon {
+    width: 17px;
+    height: 17px;
+}
+
 .title {
     text-align: center;
     font-size: 60px;
@@ -43,7 +48,6 @@ p {
     justify-content: space-evenly;
 }
 
-.boon-condi-container,
 .boons-container,
 .builds-box,
 .player,
