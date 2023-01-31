@@ -34,8 +34,12 @@ p {
 }
 
 .boon-icon {
-    width: 17px;
-    height: 17px;
+    width: 22px;
+    height: 22px;
+}
+
+.no-boon {
+    filter:  brightness(0.7) invert(0.3);
 }
 
 .title {
@@ -133,6 +137,7 @@ p {
 
 .party-box {
     width: 75%;
+    padding: 2px;
 }
 
 .player-box {

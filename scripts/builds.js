@@ -7,7 +7,7 @@ export const builds = {
                 name: 'Support Firebrand',
                 link: 'http://en.gw2skills.net/editor/?PWwAYl7lRwkYYMOmJmyW7vbA-zVJYjR9/hkmCITpQ6iKNOL+fpBA-w',
                 icon: '../img/Specs/Firebrand.png',
-                boons: ['Aegis', '', '', 'Might', 'Protection', 'Quickness', 'Regeneration', 'Resistance', 'Resolution', 'Stability', 'Swiftness', 'Vigor']
+                boons: ['Aegis', 'Might', 'Protection', 'Quickness', 'Regeneration', 'Resistance', 'Resolution', 'Stability', 'Swiftness', 'Vigor', 'Stunbreak']
             },
         ],
         Warrior: [
@@ -17,6 +17,7 @@ export const builds = {
                 name: 'Shoutbreaker',
                 link: 'http://en.gw2skills.net/editor/?PKwEwEmosAmEDj9xOxU6y+dB-zVJYjR3/ZkpUInVlqmmEcpBA-w',
                 icon: '../img/Specs/Spellbreaker.png',
+                boons: ['Might', 'Quickness', 'Resistance', 'Stability', 'Swiftness', 'Superspeed', 'Stunbreak']
             },
         ],
         Revenant: [
@@ -26,6 +27,7 @@ export const builds = {
                 name: 'Heal Vindicator',
                 link: 'http://en.gw2skills.net/editor/?PWwAYl7lRwkYYMOmJmyW7vbA-zVJYjR9/hkmCITpQ6iKNOL+fpBA-w',
                 icon: '../img/Specs/Vindicator.png',
+                boons: ['Might', 'Regeneration', 'Resistance', 'Swiftness', 'Stunbreak']
             },
         ],
         Engineer: [
@@ -35,6 +37,7 @@ export const builds = {
                 name: 'Heal Scrapper',
                 link: 'http://en.gw2skills.net/editor/?PWwAYl7lRwkYYMOmJmyW7vbA-zVJYjR9/hkmCITpQ6iKNOL+fpBA-w',
                 icon: '../img/Specs/Scrapper.png',
+                boons: ['Might', 'Regeneration', 'Resistance', 'Swiftness', 'Stealth', 'Stunbreak']
             },
         ],
         Ranger: [

@@ -4,6 +4,46 @@ import { builds } from './builds.js';
 //Base squad size is 10x 5-man parties
 let partyAmount = 10;
 
+const IDTOCLASS = {
+  'grd': 'Guardian',
+  'drg': 'Guardian',
+  'frb': 'Guardian',
+  'wlb': 'Guardian',
+  'war': 'Warrior',
+  'brs': 'Warrior',
+  'spl': 'Warrior',
+  'bld': 'Warrior',
+  'rvn': 'Revenant',
+  'hrl': 'Revenant',
+  'rng': 'Revenant',
+  'vnd': 'Revenant',
+  'eng': 'Engineer',
+  'scr': 'Engineer',
+  'hls': 'Engineer',
+  'mch': 'Engineer',
+  'thf': 'Thief',
+  'drv': 'Thief',
+  'ddy': 'Thief',
+  'spc': 'Thief',
+  'rgr': 'Ranger',
+  'drd': 'Ranger',
+  'slb': 'Ranger',
+  'unt': 'Ranger',
+  'ele': 'Elementalist',
+  'tmp': 'Elementalist',
+  'wvr': 'Elementalist',
+  'ctl': 'Elementalist',
+  'nec': 'Necromancer',
+  'rpr': 'Necromancer',
+  'scg': 'Necromancer',
+  'har': 'Necromancer',
+  'mes': 'Mesmer',
+  'chr': 'Mesmer',
+  'mir': 'Mesmer',
+  'vrt': 'Mesmer',
+}
+
+
 const squadContainer = document.querySelector('.squad-container');
 const boonsContainer = document.querySelector('.boons-container');
 const condiesContainer = document.querySelector('.condi-container');
@@ -19,7 +59,7 @@ for (const buildType in builds) {
 };
 
 for (let i = 1; i <= partyAmount; i++) {
-  AddBoon(i);
+  AddBoons(i);
 };
 
 MakeGridBox(partyAmount);
@@ -79,15 +119,22 @@ function drop(event) {
   //move the player to the new spot or swap the two players
   if (draggedEle.classList.contains('build')) {
     const newDiv = MakePlayerContainer(draggedEle, targetSquare, draggedId);
+
     //If the spot is not empty replace the old one with the new build
     //else just append it to the spot
     if (targetSquare.hasChildNodes()) {
       const playerDiv = targetSquare.firstChild;
       targetSquare.replaceChild(newDiv, playerDiv);
+
+      HideBoons(targetSquare, playerDiv);
+      DisplayBoons(targetSquare, draggedId);
+
     } else {
       targetSquare.draggable = true;
 
       targetSquare.appendChild(newDiv);
+
+      DisplayBoons(targetSquare, draggedId);
     };
   } else {
     const playerDiv = draggedEle.firstChild;
@@ -139,7 +186,7 @@ function AddBuild(buildType) {
       buildBox.src = build.icon;
 
       buildBox.classList.add('icon', 'build');
-      buildBox.id = `${buildType}-${build.id}${build.value}`
+      buildBox.id = `${buildType}-${build.id}-${build.value}`
 
       buildBox.draggable = true;
       buildBox.setAttribute('ondragstart', 'drag(event)')
@@ -158,7 +205,7 @@ function AddModalBuild(buildType) {
       buildBox.src = build.icon;
 
       buildBox.classList.add('icon', 'build');
-      buildBox.id = `modal-${buildType}-${build.id}${build.value}`
+      buildBox.id = `modal-${buildType}-${build.id}-${build.value}`
       buildBox.onclick = ModalChoice;
 
       boxInner.appendChild(buildBox);
@@ -293,11 +340,11 @@ function UpdatePlayerName(event) {
   }
 };
 
-function AddBoon(party) {
+function AddBoons(party) {
   const partyBox = document.createElement('div');
   const partyNumb = document.createElement('p');
 
-  partyBox.classList.add('party-box');
+  partyBox.classList.add('party-box', `party-box-${party}`);
 
   partyNumb.textContent = `Party ${party}`;
 
@@ -307,11 +354,95 @@ function AddBoon(party) {
     const boonIcon = document.createElement('img');
 
     boonIcon.src = boons[boon]['url'];
-    boonIcon.classList.add('boon-icon');
+    boonIcon.classList.add('boon-icon', 'no-boon', boons[boon]['name']);
 
     partyBox.appendChild(boonIcon);
   };
 
   boonsContainer.appendChild(partyBox);
 
+};
+
+function DisplayBoons(targetSquare, draggedId) {
+  const splitBuildID = draggedId.split('-');
+  const selectedBuildType = splitBuildID[0];
+  const selectedBuildId = splitBuildID[1];
+  const selectedBuildValue = splitBuildID[2];
+
+  for (const buildType in builds) {
+    if (selectedBuildType == buildType) {
+      const spec = IDTOCLASS[selectedBuildId];
+
+      for (const build of builds[buildType][spec]) {
+        if (build['value'] == selectedBuildValue) {
+          const playerBoons = build['boons'];
+          const partyNumb = targetSquare.parentNode.classList[1].split('-')[1];
+          const targetParty = document.querySelector(`.party-box-${partyNumb}`);
+
+          playerBoons.forEach(boon => {
+            targetSquare.classList.add(boon);
+          });
+
+          const partyMembers = getAllSiblings(targetSquare, filterPlayers);
+          let allPartyBoons = [];
+
+
+          partyMembers.forEach(member => {
+            const memberBoons = member.className.split(' ').slice(1)
+            allPartyBoons.push(...memberBoons);
+          });
+
+          const partyBoons = new Set(allPartyBoons);
+
+          targetParty.childNodes.forEach(boon => {
+            if ((partyBoons.has(boon.classList[2])) || (partyBoons.has(boon.classList[1]))) {
+              boon.classList.remove('no-boon');
+            };
+          });
+
+        };
+      };
+    };
+  };
+};
+
+function HideBoons(targetSquare) {
+  const partyNumb = targetSquare.parentNode.classList[1].split('-')[1];
+  const targetParty = document.querySelector(`.party-box-${partyNumb}`);
+  const removedBoons = targetSquare.className.split(' ').slice(1);
+  removedBoons.forEach(removedBoon => {
+    targetSquare.classList.remove(removedBoon)
+  });
+  targetParty.childNodes.forEach(boon => {
+    if (boon.classList.contains('no-boon')) {
+      if (removedBoons.includes(boon.classList[2])) {
+        boon.classList.add('no-boon');
+      };
+    } else {
+      if (removedBoons.includes(boon.classList[1])) {
+        boon.classList.add('no-boon');
+      };
+    };
+    
+  });
+
+};
+
+
+function getAllSiblings(elem, filter) {
+  var sibs = [];
+  elem = elem.parentNode.firstChild;
+  do {
+    if (elem.nodeType === 3) continue; // text node
+    if (!filter || filter(elem)) sibs.push(elem);
+  } while (elem = elem.nextSibling)
+  return sibs;
+}
+
+function filterPlayers(elem) {
+  if ((elem.nodeName.toUpperCase() == 'DIV') && (elem.hasChildNodes())) {
+    return true
+  } else {
+    return false
+  };
 };
