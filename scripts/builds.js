@@ -90,7 +90,7 @@ export const builds = {
                 value: 3,
                 name: 'DPS Willbender',
                 link: 'http://en.gw2skills.net/editor/?PWwAYl7lRwkYYMOmJmyW7vbA-zVJYjR9/hkmCITpQ6iKNOL+fpBA-w',
-                icon: '../img/Specs/Willbender',
+                icon: '../img/Specs/Willbender.png',
                 boons: ['Aegis', '', '', 'Might', 'Protection', 'Quickness', 'Regeneration', 'Resistance', 'Resolution', 'Stability', 'Swiftness', 'Vigor']
             },
         ],
