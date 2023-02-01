@@ -136,7 +136,7 @@ function drop(event) {
       const playerDiv = targetSquare.firstChild;
       targetSquare.replaceChild(newDiv, playerDiv);
 
-      HideBoons(targetSquare, playerDiv);
+      HideBoons(targetSquare);
       DisplayBoons(targetSquare, draggedId);
 
     } else {
@@ -149,19 +149,29 @@ function drop(event) {
   } else {
     const playerDiv = draggedEle.firstChild;
     if (targetSquare.classList.contains('empty')) {
+
       targetSquare.classList.remove('empty');
 
       targetSquare.draggable = true;
 
       targetSquare.appendChild(playerDiv);
 
+      HideBoons(draggedEle);
+
       draggedEle.classList.add('empty');
       draggedEle.draggable = false;
+
+      DisplayBoons(targetSquare, playerDiv.id);
+
     } else {
       const targetPlayer = targetSquare.firstChild;
 
       targetSquare.replaceChild(playerDiv, targetPlayer);
       draggedEle.appendChild(targetPlayer);
+
+      // HideBoons(targetSquare);
+      // DisplayBoons(targetSquare, draggedId);
+
     };
   };
 };
