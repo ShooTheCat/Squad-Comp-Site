@@ -17,7 +17,7 @@ export const builds = {
                 name: 'Shoutbreaker',
                 link: 'http://en.gw2skills.net/editor/?PKwEwEmosAmEDj9xOxU6y+dB-zVJYjR3/ZkpUInVlqmmEcpBA-w',
                 icon: './img/Specs/Spellbreaker.png',
-                boons: ['Might', 'Quickness', 'Resistance', 'Stability', 'Swiftness', 'Superspeed', 'Stunbreak']
+                boons: ['Might', 'Quickness', 'Resistance', 'Stability', 'Swiftness', 'Vigor', 'Superspeed', 'Stunbreak']
             },
         ],
         Revenant: [
@@ -25,9 +25,9 @@ export const builds = {
                 id: 'vnd',
                 value: 1,
                 name: 'Heal Vindicator',
-                link: 'http://en.gw2skills.net/editor/?PWwAYl7lRwkYYMOmJmyW7vbA-zVJYjR9/hkmCITpQ6iKNOL+fpBA-w',
+                link: 'http://en.gw2skills.net/editor/?PmgAYZldQmMH6k1QpsHCl9RqsAqkF1zX0H-zVJYjR1fp0TSFUEkZoWdB47s0+mFA-w',
                 icon: './img/Specs/Vindicator.png',
-                boons: ['Might', 'Regeneration', 'Resistance', 'Swiftness', 'Stunbreak']
+                boons: ['Might', 'Protection', 'Regeneration', 'Resistance', 'Swiftness', 'Stunbreak']
             },
         ],
         Engineer: [
@@ -35,9 +35,9 @@ export const builds = {
                 id: 'scr',
                 value: 1,
                 name: 'Heal Scrapper',
-                link: 'http://en.gw2skills.net/editor/?PWwAYl7lRwkYYMOmJmyW7vbA-zVJYjR9/hkmCITpQ6iKNOL+fpBA-w',
+                link: 'http://en.gw2skills.net/editor/?PewAo6JlNw8YPMM2JeySntUA-zVJYjRXfhEUUkZqUdB47s0+mFA-w',
                 icon: './img/Specs/Scrapper.png',
-                boons: ['Might', 'Regeneration', 'Resistance', 'Swiftness', 'Stealth', 'Stunbreak']
+                boons: ['Fury', 'Might', 'Protection', 'Regeneration', 'Swiftness', 'Vigor', 'Stealth', 'Stunbreak', 'Superspeed']
             },
         ],
         Ranger: [
@@ -47,6 +47,7 @@ export const builds = {
                 name: 'Heal Druid',
                 link: 'http://en.gw2skills.net/editor/?PWwAYl7lRwkYYMOmJmyW7vbA-zVJYjR9/hkmCITpQ6iKNOL+fpBA-w',
                 icon: './img/Specs/Druid.png',
+                boons: ['Fury', 'Protection', 'Regeneration', 'Stability', 'Vigor', 'Stunbreak']
             },
         ],
         Thief: [],
@@ -57,6 +58,7 @@ export const builds = {
                 name: 'Minstrel Chrono',
                 link: 'http://en.gw2skills.net/editor/?PWwAYl7lRwkYYMOmJmyW7vbA-zVJYjR9/hkmCITpQ6iKNOL+fpBA-w',
                 icon: './img/Specs/Chronomancer.png',
+                boons: ['Fury', 'Protection', 'Regeneration', 'Stability', 'Vigor', 'Stunbreak']
             },
         ],
         Elementalist: [
@@ -66,6 +68,7 @@ export const builds = {
                 name: 'Support Tempest',
                 link: 'http://en.gw2skills.net/editor/?PWwAYl7lRwkYYMOmJmyW7vbA-zVJYjR9/hkmCITpQ6iKNOL+fpBA-w',
                 icon: './img/Specs/Tempest.png',
+                boons: ['Aegis', 'Protection', 'Regeneration', 'Stability', 'Vigor', 'Stunbreak']
             },
         ],
         Necromancer: [],
