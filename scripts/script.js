@@ -162,15 +162,22 @@ function drop(event) {
       draggedEle.draggable = false;
 
       DisplayBoons(targetSquare, playerDiv.id);
+      DisplayBoons(draggedEle);
 
     } else {
       const targetPlayer = targetSquare.firstChild;
 
+      //Hide both the dragged player and targeted player boons
+      HideBoons(draggedEle);
+      HideBoons(targetSquare)
+
       targetSquare.replaceChild(playerDiv, targetPlayer);
       draggedEle.appendChild(targetPlayer);
 
-      // HideBoons(targetSquare);
-      // DisplayBoons(targetSquare, draggedId);
+      //Display dragged players boons again in new party
+      DisplayBoons(targetSquare, playerDiv.id);
+      //Display target players boons again in new party
+      DisplayBoons(draggedEle, targetPlayer.id);
 
     };
   };
@@ -346,6 +353,9 @@ function ModalChoice(event) {
       playerBuild.classList.remove(playerBuild.classList.item(1));
       playerBuild.classList.add(`${chosenBuild.id.split('-')[1]}-player`);
 
+      HideBoons(chosenSpot)
+      DisplayBoons(chosenSpot, playerBuild.id)
+
     } else {
       chosenBuild.classList.add('modal-chosen');
 
@@ -353,6 +363,8 @@ function ModalChoice(event) {
       chosenSpot.draggable = true;
 
       chosenSpot.appendChild(newDiv);
+
+      DisplayBoons(chosenSpot, newDiv.id)
 
     }
 
