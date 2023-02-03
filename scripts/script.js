@@ -48,7 +48,23 @@ const boonsContainer = document.querySelector('.boons-container');
 const condiesContainer = document.querySelector('.condi-container');
 const modal = document.getElementById("playerModal");
 const modalCloseX = document.querySelector(".close-modal");
-const modalNameForm = document.getElementById('modal-name-form')
+const modalNameForm = document.getElementById('modal-name-form');
+const removePlayerButton = document.querySelector('.removeplayerbtn');
+
+removePlayerButton.addEventListener('click', (event) => {
+  const chosenSpot = document.getElementById(modal.classList.item(1));
+  if (chosenSpot.firstChild) {
+    chosenSpot.removeChild(chosenSpot.firstChild);
+    chosenSpot.classList.add('empty');
+    chosenSpot.draggable = false;
+
+    modal.style.display = "none";
+    RemoveModalBuilds();
+
+  } else {
+    return
+  }
+})
 
 modalNameForm.addEventListener('submit', UpdatePlayerName)
 
@@ -311,12 +327,13 @@ function OpenModal(event) {
   modal.style.display = "block";
 };
 
-// When the user clicks on <span> (x), close the modal
+// When user clicks on <span> (x), close the modal
 modalCloseX.onclick = function () {
   modal.style.display = "none";
   RemoveModalBuilds();
 };
 
+// Whne user presses 'Enter' close the modal.
 document.onkeydown = function (event) {
   if ((event.key == 'Escape') || (event.key == 'Enter')) {
     modal.style.display = "none";
@@ -325,7 +342,7 @@ document.onkeydown = function (event) {
   };
 };
 
-// When the user clicks anywhere outside of the modal, close it
+// When user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
@@ -402,6 +419,9 @@ function UpdatePlayerName(event) {
   if (chosenSpot.firstChild) {
     const playerName = chosenSpot.firstChild.lastChild;
     playerName.textContent = newPlayerName.value
+
+    modal.style.display = "none";
+    RemoveModalBuilds();
   } else {
     return
   }

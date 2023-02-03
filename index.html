@@ -65,12 +65,15 @@
                 <div class="modal-content">
                         <span class="close-modal">&times;</span>
                         <div class="modal-body">
-                                <form id="modal-name-form">
-                                        <label for="pname">Player Name</label>
-                                        <input type="text" id="pname" name="playername" placeholder="Name"
-                                                maxlength="10" size="10">
-                                        <input type="submit" value="Update Name">
-                                </form>
+                                <div class="modal-player-info">
+                                        <form id="modal-name-form">
+                                                <label for="pname">Player Name</label>
+                                                <input type="text" id="pname" name="playername" placeholder="Name"
+                                                        maxlength="10" size="10">
+                                                <input type="submit" value="Update Name">
+                                        </form>
+                                        <button type="button" class="removeplayerbtn">Remove Player</button>
+                                </div>
                                 <div class="builds-container">
                                         <div class="builds">
                                                 <div class="builds-box modal-support">
