@@ -55,6 +55,10 @@ removePlayerButton.addEventListener('click', (event) => {
   const chosenSpot = document.getElementById(modal.classList.item(1));
   if (chosenSpot.firstChild) {
     chosenSpot.removeChild(chosenSpot.firstChild);
+
+    HideBoons(chosenSpot);
+    DisplayBoons(chosenSpot);
+
     chosenSpot.classList.add('empty');
     chosenSpot.draggable = false;
 
