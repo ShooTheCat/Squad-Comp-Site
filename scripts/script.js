@@ -124,15 +124,12 @@ function drop(event) {
 
   const targetSquare = event.target
 
-  //If it's taken from the build container create a new player container
-  //else check if the target spot is empty or not and either
-  //move the player to the new spot or swap the two players
   if (draggedEle.classList.contains('build')) {
+    //The player was created from the builds section.
     const newDiv = MakePlayerContainer(draggedEle, targetSquare, draggedId);
 
-    //If the spot is not empty replace the old one with the new build
-    //else just append it to the spot
     if (targetSquare.hasChildNodes()) {
+      //Selected spot in squad already had a player in it so we exchange it with a new one.
       const playerDiv = targetSquare.firstChild;
       targetSquare.replaceChild(newDiv, playerDiv);
 
@@ -140,6 +137,7 @@ function drop(event) {
       DisplayBoons(targetSquare, draggedId);
 
     } else {
+      //Selected spot was empty so we create a new player in that spot.
       targetSquare.draggable = true;
 
       targetSquare.appendChild(newDiv);
@@ -147,24 +145,28 @@ function drop(event) {
       DisplayBoons(targetSquare, draggedId);
     };
   } else {
+    //Player was moved from one spot to another.
     const playerDiv = draggedEle.firstChild;
-    if (targetSquare.classList.contains('empty')) {
 
+
+    if (targetSquare.classList.contains('empty')) {
+      //The targeted spot was empty
       targetSquare.classList.remove('empty');
 
       targetSquare.draggable = true;
 
       targetSquare.appendChild(playerDiv);
-
+      //Hide the dragged players boons.
       HideBoons(draggedEle);
 
       draggedEle.classList.add('empty');
       draggedEle.draggable = false;
-
+      //Display the boons again
       DisplayBoons(targetSquare, playerDiv.id);
       DisplayBoons(draggedEle);
 
     } else {
+      //The target square has another player in it.
       const targetPlayer = targetSquare.firstChild;
 
       //Hide both the dragged player and targeted player boons
@@ -429,41 +431,42 @@ function AddBoons(party) {
 };
 
 function DisplayBoons(targetSquare, draggedId) {
-  const splitBuildID = draggedId.split('-');
-  const selectedBuildType = splitBuildID[0];
-  const selectedBuildId = splitBuildID[1];
-  const selectedBuildValue = splitBuildID[2];
+  const partyNumb = targetSquare.parentNode.classList[1].split('-')[1];
+  const targetParty = document.querySelector(`.party-box-${partyNumb}`);
+  const partyMembers = getAllSiblings(targetSquare, filterPlayers);
+  let allPartyBoons = [];
 
-  const spec = IDTOCLASS[selectedBuildId];
+  if (draggedId) {
+    const splitBuildID = draggedId.split('-');
+    const selectedBuildType = splitBuildID[0];
+    const selectedBuildId = splitBuildID[1];
+    const selectedBuildValue = splitBuildID[2];
 
-  for (const build of builds[selectedBuildType][spec]) {
-    if (build['value'] == selectedBuildValue) {
-      const playerBoons = build['boons'];
-      const partyNumb = targetSquare.parentNode.classList[1].split('-')[1];
-      const targetParty = document.querySelector(`.party-box-${partyNumb}`);
+    const spec = IDTOCLASS[selectedBuildId];
 
-      playerBoons.forEach(boon => {
-        targetSquare.classList.add(boon);
-      });
+    for (const build of builds[selectedBuildType][spec]) {
+      if (build['value'] == selectedBuildValue) {
+        const playerBoons = build['boons'];
 
-      const partyMembers = getAllSiblings(targetSquare, filterPlayers);
-      let allPartyBoons = [];
-
-
-      partyMembers.forEach(member => {
-        const memberBoons = member.className.split(' ').slice(1)
-        allPartyBoons.push(...memberBoons);
-      });
-
-      const partyBoons = new Set(allPartyBoons);
-
-      targetParty.childNodes.forEach(boon => {
-        if ((partyBoons.has(boon.classList[2])) || (partyBoons.has(boon.classList[1]))) {
-          boon.classList.remove('no-boon');
-        };
-      });
+        playerBoons.forEach(boon => {
+          targetSquare.classList.add(boon);
+        });
+      };
     };
   };
+
+  partyMembers.forEach(member => {
+    const memberBoons = member.className.split(' ').slice(1)
+    allPartyBoons.push(...memberBoons);
+  });
+
+  const partyBoons = new Set(allPartyBoons);
+
+  targetParty.childNodes.forEach(boon => {
+    if ((partyBoons.has(boon.classList[2])) || (partyBoons.has(boon.classList[1]))) {
+      boon.classList.remove('no-boon');
+    };
+  });
 };
 
 function HideBoons(targetSquare) {
