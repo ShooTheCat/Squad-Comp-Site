@@ -188,7 +188,11 @@ p {
 }
 
 .party-row>div {
-    margin: 2px;
+    margin: 4px;
+}
+
+.party-row>.empty {
+    margin-right: 2px;
 }
 
 .party-row>h2 {
