@@ -62,11 +62,15 @@ removePlayerButton.addEventListener('click', (event) => {
     HideBoons(chosenSpot);
     DisplayBoons(chosenSpot);
 
+    delete squadPlayers[chosenSpot.id.replace("player-box-", "")];
+
     chosenSpot.classList.add('empty');
     chosenSpot.draggable = false;
 
     modal.style.display = "none";
     RemoveModalBuilds();
+
+    UpdateBuildLink();
 
   } else {
     return
