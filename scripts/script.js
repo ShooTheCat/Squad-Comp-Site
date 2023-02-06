@@ -438,6 +438,7 @@ function AddBoons(party) {
   partyBox.classList.add('party-box', `party-box-${party}`);
 
   partyNumb.textContent = `Party ${party}`;
+  partyNumb.style.fontWeight = 'bold';
 
   boonsContainer.appendChild(partyNumb);
 
