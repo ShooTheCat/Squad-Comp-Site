@@ -265,6 +265,7 @@ function AddPlayerFromParams(playerSpot, playerBuild, playerName) {
   };
 
   playerSpot.classList.remove('empty');
+  playerSpot.draggable = true
 
   playerNameEle.textContent = playerName;
   playerNameEle.classList.add('player-name');
