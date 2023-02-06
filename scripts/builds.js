@@ -58,7 +58,7 @@ export const builds = {
                 name: 'Minstrel Chrono',
                 link: 'http://gw2skills.net/editor/?PiABw6x3lVw+YisMWJOuS1tWA-zVJYjx/ZkpUobVlGnGEcpBA-w',
                 icon: './img/Specs/Chronomancer.png',
-                boons: ['Aegis', 'Might', 'Protection', 'Quickness', 'Regeneration', 'Resistance', 'Swiftness']
+                boons: ['Aegis', 'Might', 'Protection', 'Quickness', 'Regeneration', 'Resistance', 'Swiftness', 'Stealth']
             },
         ],
         Elementalist: [
@@ -244,7 +244,7 @@ export const builds = {
                 name: 'Cele Chrono',
                 link: 'http://gw2skills.net/editor/?PiABw2x7lNw+YNsMWJOuWptOA-z1IY14/M6WVlzUVjHiw83C9/aAA-w',
                 icon: './img/Specs/Chronomancer.png',
-                boons: ['Aegis', 'Alacrity', 'Might', 'Protection', 'Regeneration', 'Resistance', 'Swiftness']
+                boons: ['Aegis', 'Alacrity', 'Might', 'Protection', 'Regeneration', 'Resistance', 'Swiftness', 'Stealth']
             },
         ],
         Elementalist: [
