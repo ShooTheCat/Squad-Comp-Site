@@ -4,6 +4,8 @@ import { builds } from './builds.js';
 //Base squad size is 10x 5-man parties
 let partyAmount = 10;
 
+let squadPlayers = {};
+
 const IDTOCLASS = {
   'grd': 'Guardian',
   'drg': 'Guardian',
@@ -41,8 +43,9 @@ const IDTOCLASS = {
   'chr': 'Mesmer',
   'mir': 'Mesmer',
   'vrt': 'Mesmer',
-}
+};
 
+const buildURL = document.getElementById('generatedURL');
 const squadContainer = document.querySelector('.squad-container');
 const boonsContainer = document.querySelector('.boons-container');
 const condiesContainer = document.querySelector('.condi-container');
@@ -67,10 +70,10 @@ removePlayerButton.addEventListener('click', (event) => {
 
   } else {
     return
-  }
-})
+  };
+});
 
-modalNameForm.addEventListener('submit', UpdatePlayerName)
+modalNameForm.addEventListener('submit', UpdatePlayerName);
 
 MakeGridBox(partyAmount);
 
@@ -86,13 +89,12 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 
 for (const key in params) {
-  console.log(key, params[key]);
+  squadPlayers[key] = params[key];
   const playerSpot = document.getElementById(`player-box-${key}`);
   const playerBuild = params[key].split(',')[0]
   const playerName = params[key].split(',')[1];
   AddPlayerFromParams(playerSpot, playerBuild, playerName);
-
-}
+};
 
 function MakeGridBox(rows) {
   for (let i = 1; i <= rows; i++) {
@@ -156,6 +158,9 @@ function drop(event) {
       HideBoons(targetSquare);
       DisplayBoons(targetSquare, draggedId);
 
+      AddPlayerToLink(targetSquare, newDiv);
+      UpdateBuildLink();
+
     } else {
       //Selected spot was empty so we create a new player in that spot.
       targetSquare.draggable = true;
@@ -163,6 +168,9 @@ function drop(event) {
       targetSquare.appendChild(newDiv);
 
       DisplayBoons(targetSquare, draggedId);
+
+      AddPlayerToLink(targetSquare, newDiv);
+      UpdateBuildLink();
     };
   } else {
     //Player was moved from one spot to another.
@@ -185,6 +193,10 @@ function drop(event) {
       DisplayBoons(targetSquare, playerDiv.id);
       DisplayBoons(draggedEle);
 
+      delete squadPlayers[draggedEle.id.replace("player-box-", "")];
+      AddPlayerToLink(targetSquare, playerDiv);
+      UpdateBuildLink();
+
     } else {
       //The target square has another player in it.
       const targetPlayer = targetSquare.firstChild;
@@ -200,6 +212,15 @@ function drop(event) {
       DisplayBoons(targetSquare, playerDiv.id);
       //Display target players boons again in new party
       DisplayBoons(draggedEle, targetPlayer.id);
+
+
+      delete squadPlayers[draggedEle.id.replace("player-box-", "")];
+      delete squadPlayers[targetSquare.id.replace("player-box-", "")];
+
+      AddPlayerToLink(targetSquare, playerDiv);
+      AddPlayerToLink(draggedEle, targetPlayer);
+
+      UpdateBuildLink();
 
     };
   };
@@ -257,7 +278,7 @@ function AddPlayerFromParams(playerSpot, playerBuild, playerName) {
   playerSpot.appendChild(newDiv);
 
   DisplayBoons(playerSpot, playerBuild)
-}
+};
 
 function AddBuild(buildType) {
   const boxInner = document.getElementById(`${buildType}-inner`);
@@ -376,8 +397,13 @@ function ModalChoice(event) {
       playerBuild.classList.remove(playerBuild.classList.item(1));
       playerBuild.classList.add(`${chosenBuild.id.split('-')[1]}-player`);
 
-      HideBoons(chosenSpot)
-      DisplayBoons(chosenSpot, playerBuild.id)
+      HideBoons(chosenSpot);
+      DisplayBoons(chosenSpot, playerBuild.id);
+
+      delete squadPlayers[chosenSpot.id.replace("player-box-", "")];
+
+      AddPlayerToLink(chosenSpot, playerBuild);
+      UpdateBuildLink();
 
     } else {
       chosenBuild.classList.add('modal-chosen');
@@ -387,8 +413,10 @@ function ModalChoice(event) {
 
       chosenSpot.appendChild(newDiv);
 
-      DisplayBoons(chosenSpot, newDiv.id)
+      DisplayBoons(chosenSpot, newDiv.id);
 
+      AddPlayerToLink(chosenSpot, newDiv);
+      UpdateBuildLink();
     }
 
   }
@@ -423,6 +451,11 @@ function UpdatePlayerName(event) {
   if (chosenSpot.firstChild) {
     const playerName = chosenSpot.firstChild.lastChild;
     playerName.textContent = newPlayerName.value
+
+    delete squadPlayers[chosenSpot.id.replace("player-box-", "")];
+
+    AddPlayerToLink(chosenSpot, chosenSpot.firstChild);
+    UpdateBuildLink();
 
     modal.style.display = "none";
     RemoveModalBuilds();
@@ -524,7 +557,7 @@ function getAllSiblings(elem, filter) {
     if (!filter || filter(elem)) sibs.push(elem);
   } while (elem = elem.nextSibling)
   return sibs;
-}
+};
 
 function filterPlayers(elem) {
   if ((elem.nodeName.toUpperCase() == 'DIV') && (elem.hasChildNodes())) {
@@ -532,4 +565,21 @@ function filterPlayers(elem) {
   } else {
     return false
   };
+};
+
+function AddPlayerToLink(targetSquare, playerDiv) {
+  const squadSpot = targetSquare.id.replace("player-box-", "")
+  squadPlayers[squadSpot] = `${playerDiv.id},${playerDiv.textContent}`
+}
+
+function UpdateBuildLink() {
+  buildURL.value = buildURL.defaultValue;
+
+  let urlValues = ''
+
+  for (const key in squadPlayers) {
+    urlValues += `&${key}=${squadPlayers[key]}`
+  };
+
+  buildURL.value += urlValues.slice(1);
 };

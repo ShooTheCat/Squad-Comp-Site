@@ -10,11 +10,25 @@
         <script src="./scripts/script.js" type="module" defer></script>
         <script src="./scripts/boons.js" type="module" defer></script>
         <script src="./scripts/builds.js" type="module" defer></script>
-        <script src="./scripts/sha256.min.js" type="module" defer></script>
         <script>
                 function drag(event) {
                         event.dataTransfer.setData("text", event.target.id);
                 }
+
+                function copyFunc() {
+                        // Get the text field
+                        var copyText = document.getElementById("generatedURL");
+
+                        // Select the text field
+                        copyText.select();
+                        copyText.setSelectionRange(0, 99999);
+
+                        // Copy the text inside the text field
+                        navigator.clipboard.writeText(copyText.value);
+
+                        // Alert the copied text
+                        alert("Copied the build URL: \n" + copyText.value);
+                } 
         </script>
 </head>
 
@@ -26,7 +40,10 @@
                 <p>You can drag the players in the squad to different spots and swap their positions.</p>
                 <p>Clicking on a player will allow you to change the name and profession.</p>
         </div>
-
+        <div class="squad-link">
+                <input type="text" value="shoothecat.github.io/Squad-Comp-Site?" id="generatedURL" autocomplete=off>
+                <button onclick="copyFunc()">Copy text</button>
+        </div>
         <div class="content">
                 <div class="builds-container">
                         <h3>Builds</h3>
